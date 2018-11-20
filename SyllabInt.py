@@ -48,8 +48,8 @@ Pronunciation rules:
         z: /z/
 
 Todo:
-    * comments
     * error handling
+    * add padding method to force string to have a minimum number of syllabs
 
 """
 # #############79##############################################################
@@ -92,8 +92,7 @@ class SyllabInt:
     def __init__(self, number=int(time.time())):
         self._syllabs = [voyo+conso for conso in self._consos
                          for voyo in self._voyos]
-        self._value = number
-        self.Refresh()
+        self.value = number
 
     @property
     def value(self):
@@ -110,8 +109,7 @@ class SyllabInt:
 
     @code.setter
     def code(self, str):
-        self._value = self.Decode(str.replace(self._separator, ""))
-        self.Refresh()
+        self.value = self.Decode(str.replace(self._separator, ""))
 
     @property
     def reverse(self):
@@ -119,7 +117,7 @@ class SyllabInt:
 
     @reverse.setter
     def reverse(self, str):
-        self.code = "".join(reversed(str))
+        self.code = self.Reverse_String((str))
 
     @property
     def swap(self):
@@ -135,7 +133,7 @@ class SyllabInt:
 
     @both.setter
     def both(self, str):
-        self.swap = "".join(reversed(str))
+        self.swap = self.Reverse_String(str)
 
     """Encode method is used recursively to create a list od syllab index,
     each inde represent a syllab and each syllab represent à 0 to 119 integer
@@ -171,7 +169,7 @@ class SyllabInt:
         return value
 
     """Refresh method recreates all the depictions of the inner integer
-
+    Method is kicked at each change in the value
     """
     def Refresh(self):
         self._encoding = self.Encode(self.value, [])
@@ -187,7 +185,6 @@ class SyllabInt:
         self._both = self.Reverse_String(self.swap)
 
     """ToDateTime returns a datetime object integer value used as unix epoch
-
     """
     def ToDateTime(self):
         return time.ctime(self._value)
