@@ -22,16 +22,30 @@ The object can provide the code generated, a word swapped version of the code, t
     Reverse version is "Ak-ItEb-EgEm"  
     Swapped version is "kA-tIbE-gEmE"  
     Both transformations version is "EmEg-EbIt-Ak"
-    This represents the date Mon Jan  7 09:48:29 2019
+    This represents the date "Mon Jan  7 09:48:29 2019"
 
 ## Code example :
-    test = SyllabInt()   
+    ### Timestamp ###
+    test = SyllabInt()    # note: default value is now unix epochs
     print("value      : " + str(test.value))
     print("code       : " + test.code)
     print("reverse    : " + test.reverse)
     print("swap       : " + test.swap)
     print("both       : " + test.both)
     print("date       : " + test.ToDateTime())
+
+    ### Constructors ###
+    print("string code for int 165  : " + SyllabInt.From_Int(165).code)
+    print("int value for code mAcA  : " +
+          str(SyllabInt.From_Code("mAcA").value))
+    print("value for code nOsE-mUqI-kA    : " +
+          str(SyllabInt.From_Code("nOsE-mUqI-kA").value))
+    print("value for swap kA-qImU-sEnO    : " +
+          str(SyllabInt.From_Swap("kA-qImU-sEnO").value))
+    print("value for reverse Ak-IqUm-EsOn : " +
+          str(SyllabInt.From_Reverse("Ak-IqUm-EsOn").value))
+    print("value for both OnEs-UmIq-Ak    : " +
+          str(SyllabInt.From_Both("OnEs-UmIq-Ak").value))
 
 ## Pronunciation rules:
     Vowels:
