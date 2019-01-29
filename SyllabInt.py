@@ -12,40 +12,40 @@ The alpĥabet has 6 vowels and 20 consonants, so a syllab can depict 120 numbers
 and a word of 2 syllabs can then depict 120*120 = 14_440 numbers.
 
 Example:
-    Integer 11_566 is encoded by the string "jIvU"
-    jIvU can be visually easier to read, say and remember
+    Integer 11_566 is encoded by the string "JiVu"
+    JiVu can be visually easier to read, say and remember
     Can be use as a timestamp for file,
     as a friendly depiction of a phone number or any other number
 
 Pronunciation rules:
     Vowels:
-        A: /a/, /ɑ/
-        E: /ɛ/
-        I: /i/
-        O: /o/
-        U: /y/, /ɥ/
-        Y: /aj/
+        a: /a/, /ɑ/
+        e: /ɛ/
+        i: /i/
+        o: /o/
+        u: /y/, /ɥ/
+        y: /aj/
     Consonants:
-        b: /b/
-        c: /ʃ/ (ch)
-        d: /d/
-        f: /f/
-        g: /ɡ/
-        h: .
-        j: /ʒ/
-        k: /k/
-        l: /l/
-        m: /m/
-        n: /n/
-        p: /p/
-        q: /kw/
-        r: /ʁ/
-        s: /s/
-        t: /t/
-        v: /v/
-        w: /w/
-        x: /ɡz/, /ks/
-        z: /z/
+        B: /b/
+        C: /ʃ/ (ch)
+        D: /d/
+        F: /f/
+        G: /ɡ/
+        H: .
+        J: /ʒ/
+        K: /k/
+        L: /l/
+        M: /m/
+        N: /n/
+        P: /p/
+        Q: /kw/
+        R: /ʁ/
+        S: /s/
+        T: /t/
+        V: /v/
+        W: /w/
+        X: /ɡz/, /ks/
+        Z: /z/
 
 Todo:
     * error handling
@@ -55,10 +55,10 @@ Todo:
 # #############79##############################################################
 #                                      #
 __author__ = "jxtrbtk"                 #
-__contact__ = "bYhO-bOwA-dIcA"         #
-__date__ = "cYkO-qUqI-kA"              # Tue Nov 20 11:15:41 2018
+__contact__ = "ByHo-BoWa-DiCa"         #
+__date__ = "BeZy-QeVi-Ka"              # Tue Jan 29 12:58:20 2019
 __email__ = "j.t[4t]free.fr"           #
-__version__ = "1.0"                    #
+__version__ = "1.1.0"                  #
 #                                      #
 # ##################################79#########################################
 
@@ -80,8 +80,8 @@ class SyllabInt:
         swap: string representation syllabs swapped, MSB first
         both: string representation both swapped and reversed
     """
-    _consos = list("AEIOUY")
-    _voyos = list("bcdfghjklmnpqrstvwxz")
+    _consos = list("aeiouy".lower())
+    _voyos = list("bcdfghjklmnpqrstvwxz".upper())
     _separator = "-"
 
     """Init method
@@ -89,9 +89,11 @@ class SyllabInt:
     Arguments:
         number: positive integer to depict (default: unix epochs is seconds)
     """
-    def __init__(self, number=int(time.time())):
+    def __init__(self, number=None):
         self._syllabs = [voyo+conso for conso in self._consos
                          for voyo in self._voyos]
+        if number is None:
+            number = int(time.time())
         self.value = number
 
     @property
@@ -270,6 +272,7 @@ class SyllabInt:
 # #################################################################79##########
 # local unit tests
 
+
 if __name__ == "__main__":
 
     print("-"*79)
@@ -284,18 +287,18 @@ if __name__ == "__main__":
     print("-"*79)
 
     print("string code for int 165  : " + SyllabInt.From_Int(165).code)
-    print("int value for code mAcA  : " +
-          str(SyllabInt.From_Code("mAcA").value))
+    print("int value for code MaCa  : " +
+          str(SyllabInt.From_Code("MaCa").value))
     print("-"*79)
 
-    print("value for code nOsE-mUqI-kA    : " +
-          str(SyllabInt.From_Code("nOsE-mUqI-kA").value))
-    print("value for swap kA-qImU-sEnO    : " +
-          str(SyllabInt.From_Swap("kA-qImU-sEnO").value))
-    print("value for reverse Ak-IqUm-EsOn : " +
-          str(SyllabInt.From_Reverse("Ak-IqUm-EsOn").value))
-    print("value for both OnEs-UmIq-Ak    : " +
-          str(SyllabInt.From_Both("OnEs-UmIq-Ak").value))
+    print("value for code NoSe-MuQi-Ka    : " +
+          str(SyllabInt.From_Code("NoSe-MuQi-Ka").value))
+    print("value for swap Ka-QiMu-SeNo    : " +
+          str(SyllabInt.From_Swap("Ka-QiMu-SeNo").value))
+    print("value for reverse aK-iQuM-eSoN : " +
+          str(SyllabInt.From_Reverse("aK-iQuM-eSoN").value))
+    print("value for both oNeS-uMiQ-aK    : " +
+          str(SyllabInt.From_Both("oNeS-uMiQ-aK").value))
     print("-"*79)
 
 # #######################################################79####################
