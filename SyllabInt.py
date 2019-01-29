@@ -57,7 +57,7 @@ Todo:
 __author__ = "jxtrbtk"                 #
 __contact__ = "ByHo-BoWa-DiCa"         #
 __date__ = "BeZy-QeVi-Ka"              # Tue Jan 29 12:58:20 2019
-__email__ = "j.t[4t]free.fr"           #
+__email__ = "yeah[4t]free.fr"          #
 __version__ = "1.1.0"                  #
 #                                      #
 # ##################################79#########################################
